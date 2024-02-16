@@ -3,5 +3,5 @@
 - 🌱 I’m currently learning web developing & c langage ...
 - 💞️ I’m looking to collaborate on ...
 - 📫 more about vist :  https://muhammedadnanv.github.io/Portfolio/
-- My Contact Number Is  =91 9656778508
+- My Contact Number Is  +91 9656778508
 - Make A coffees : https://www.buymeacoffee.com/muhammedadan
