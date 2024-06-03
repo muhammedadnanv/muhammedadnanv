@@ -1,47 +1,34 @@
-<h1 align="center">Hi 👋, I'm Muhammed Adnan</h1>
-<h3 align="center">A passionate frontend developer from India</h3>
+# 💫 About Me:
+- 🔭 I’m currently working on [Corn.Ai](https://github.com/muhammedadnanv/Corn.ai.git)<br><br>- 🌱 I’m currently learning **Front end Developer, AI Prompt engineer**<br><br>- 👨‍💻 All of my projects are available at [https://portfolio-three-vert-57.vercel.app/](https://portfolio-three-vert-57.vercel.app/)<br><br>- 💬 Ask me about **Html,Css,jaavascript**<br><br>- 📫 How to reach me **adnanmuhammad4393@gmail.com**<br><br>- 📄 Know about my experiences [https://pdf.ac/2sIQV1](https://pdf.ac/2sIQV1)<br><br>- ⚡ Fact **I Think Front End is The Best**
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=muhammedadnanv&label=Profile%20views&color=0e75b6&style=flat" alt="muhammedadnanv" /> </p>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=muhammedadnanv" alt="muhammedadnanv" /></a> </p>
+## 🌐 Socials:
+[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.gg/https://discord.gg/MYaRxt7u) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/its_adnan_are) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/muhammedadnanvv) [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@@adnanmuhammad4393) [![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?logo=stack-overflow&logoColor=white)](https://stackoverflow.com/users/muhammad-adnan) [![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/adnanvv73611) [![Codepen](https://img.shields.io/badge/Codepen-000000?style=for-the-badge&logo=codepen&logoColor=white)](https://codepen.io/muhammedadnanv) 
 
-<p align="left"> <a href="https://twitter.com/adnanvv73611" target="blank"><img src="https://img.shields.io/twitter/follow/adnanvv73611?logo=twitter&style=for-the-badge" alt="adnanvv73611" /></a> </p>
+# 💻 Tech Stack:
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-%234D4D4D.svg?style=for-the-badge&logo=windows-terminal&logoColor=white) ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white) ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7) ![GithubPages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Bitbucket](https://img.shields.io/badge/bitbucket-%230047B3.svg?style=for-the-badge&logo=bitbucket&logoColor=white) ![Gitpod](https://img.shields.io/badge/gitpod-f06611.svg?style=for-the-badge&logo=gitpod&logoColor=white)
+# 📊 GitHub Stats:
+![](https://github-readme-stats.vercel.app/api?username=muhammedadnanv&theme=dark&hide_border=false&include_all_commits=true&count_private=true)<br/>
+![](https://github-readme-streak-stats.herokuapp.com/?user=muhammedadnanv&theme=dark&hide_border=false)<br/>
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=muhammedadnanv&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
-- 🔭 I’m currently working on [Corn.Ai](https://github.com/muhammedadnanv/Corn.ai.git)
+## 🏆 GitHub Trophies
+![](https://github-profile-trophy.vercel.app/?username=muhammedadnanv&theme=matrix&no-frame=false&no-bg=false&margin-w=4)
 
-- 🌱 I’m currently learning **Front end Developer, AI Prompt engineer**
+### ✍️ Random Dev Quote
+![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox)
 
-- 👨‍💻 All of my projects are available at [https://portfolio-three-vert-57.vercel.app/](https://portfolio-three-vert-57.vercel.app/)
+### 🔝 Top Contributed Repo
+![](https://github-contributor-stats.vercel.app/api?username=muhammedadnanv&limit=5&theme=tokyonight&combine_all_yearly_contributions=true)
 
-- 💬 Ask me about **Html,Css,jaavascript**
+### 😂 Random Dev Meme
+<img src='https://memer-new.vercel.app/' style="height: 400px;"/>
 
-- 📫 How to reach me **adnanmuhammad4393@gmail.com**
+---
+[![](https://visitcount.itsvg.in/api?id=muhammedadnanv&icon=1&color=1)](https://visitcount.itsvg.in)
 
-- 📄 Know about my experiences [https://pdf.ac/2sIQV1](https://pdf.ac/2sIQV1)
+  ## 💰 You can help me by Donating
+  [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/muhammedadan) 
 
-- ⚡ Fact **I Think Front End is The Best**
-
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://twitter.com/adnanvv73611" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="adnanvv73611" height="30" width="40" /></a>
-<a href="https://linkedin.com/in/in/muhammedadnanvv/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="in/muhammedadnanvv/" height="30" width="40" /></a>
-<a href="https://stackoverflow.com/users/muhammad-adnan" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/stack-overflow.svg" alt="muhammad-adnan" height="30" width="40" /></a>
-<a href="https://codesandbox.com/adnanmuhammad4393" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/codesandbox.svg" alt="adnanmuhammad4393" height="30" width="40" /></a>
-<a href="https://kaggle.com/muhammedadnan321" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/kaggle.svg" alt="muhammedadnan321" height="30" width="40" /></a>
-<a href="https://instagram.com/its_adnan-are" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="its_adnan-are" height="30" width="40" /></a>
-<a href="https://hashnode.com/https://muhammedadnanvv.hashnode.dev" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hashnode.svg" alt="https://muhammedadnanvv.hashnode.dev" height="30" width="40" /></a>
-<a href="https://www.codechef.com/users/adnanmuhammad4" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/codechef.svg" alt="adnanmuhammad4" height="30" width="40" /></a>
-<a href="https://auth.geeksforgeeks.org/user/adnanmuharf8x" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/geeks-for-geeks.svg" alt="adnanmuharf8x" height="30" width="40" /></a>
-</p>
-
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://zapier.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/zapier/zapier-icon.svg" alt="zapier" width="40" height="40"/> </a> </p>
-
-<h3 align="left">Support:</h3>
-<p><a href="https://www.buymeacoffee.com/muhammedadan"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="muhammedadan" /></a></p><br><br>
-
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=muhammedadnanv&show_icons=true&locale=en&layout=compact" alt="muhammedadnanv" /></p>
-
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=muhammedadnanv&show_icons=true&locale=en" alt="muhammedadnanv" /></p>
-
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=muhammedadnanv&" alt="muhammedadnanv" /></p>
+  
+<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
