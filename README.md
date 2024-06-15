@@ -32,3 +32,4 @@
 
   
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+<a href="https://app.daily.dev/muhammedadnan"><img src="https://api.daily.dev/devcards/v2/a1vw69ngA8neS8zsueXcc.png?type=default&r=77i" width="356" alt="Muhammed Adnan's Dev Card"/></a>
