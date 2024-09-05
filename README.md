@@ -32,7 +32,87 @@
 
   ## 💰 You can help me by Donating
   [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/muhammedadan) 
+<style>
+        /* Widget Container */
+        .donate-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
+        /* Widget Button Styles */
+        .donate-widget {
+            background-color: #4285F4; /* Google Pay blue */
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donate-widget:hover {
+            background-color: #357AE8;
+            transform: translateY(-3px); /* Adds slight lift on hover */
+        }
+
+        .gpay-icon {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .donate-widget {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .gpay-icon {
+                width: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .donate-widget {
+                padding: 10px 15px;
+                font-size: 13px;
+                border-radius: 20px;
+            }
+
+            .gpay-icon {
+                width: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Widget Container -->
+    <div class="donate-widget-container">
+        <a href="upi://pay?pa=adnanmuhammad4393@okicici&pn=Corn.ai&am=500&cu=INR&tn=Support%20Corn.ai%20with%20Donation" class="donate-widget" id="donateButton">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-pay-icon.png" alt="Google Pay" class="gpay-icon">
+            Support Corn.ai 
+        </a>
+    </div>
+
+    <script>
+        // Optional JavaScript to handle the click event
+        document.getElementById('donateButton').addEventListener('click', function () {
+            // You can add additional functionality here if needed
+            console.log('Donate button clicked');
+        });
+    </script>
   
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
 <a href="https://app.daily.dev/muhammedadnan"><img src="https://api.daily.dev/devcards/v2/a1vw69ngA8neS8zsueXcc.png?type=default&r=77i" width="356" alt="Muhammed Adnan's Dev Card"/></a>
