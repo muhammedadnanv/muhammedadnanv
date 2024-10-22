@@ -1,5 +1,8 @@
 # 💫 About Me:
 - 🔭 I’m currently working on [Corn.Ai](https://github.com/muhammedadnanv/Corn.ai.git)<br><br>- 🌱 I’m currently learning **Front end Developer, AI Prompt engineer**<br><br>- 👨‍💻 All of my projects are available at [https://muhammedadnanavv.vercel.app/](https://muhammedadnanavv.vercel.app/)<br><br>- 💬 Ask me about **Html,Css,jaavascript**<br><br>- 📫 How to reach me **adnanmuhammad4393@gmail.com**<br><br>- 📄 Know about my experiences [https://pdf.ac/2sIQV1](https://pdf.ac/2sIQV1)<br><br>- ⚡ Fact **I Think Front End is The Best**
+<div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="muhammedadnanvv" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/muhammedadnanvv/en?trk=profile-badge">Muhammad Adnan</a></div>
+              
+- 
 - <br> <h1> Iam Also A  Chief Visionary Architect At ComicFix.com </h1>
 
 
@@ -28,24 +31,8 @@
 
 ### 🔝 Top Contributed Repo
 ![](https://github-contributor-stats.vercel.app/api?username=muhammedadnanv&limit=5&theme=tokyonight&combine_all_yearly_contributions=true)
-<style>
-        .libutton {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: 7px;
-          text-align: center;
-          outline: none;
-          text-decoration: none !important;
-          color: #ffffff !important;
-          width: 200px;
-          height: 32px;
-          border-radius: 16px;
-          background-color: #0A66C2;
-          font-family: "SF Pro Text", Helvetica, sans-serif;
-        }
-      </style>
-<a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=muhammedadnanvv" target="_blank">Follow on LinkedIn</a>
+
+
 ### 😂 Random Dev Meme
 <img src='https://memer-new.vercel.app/' style="height: 400px;"/>
 
