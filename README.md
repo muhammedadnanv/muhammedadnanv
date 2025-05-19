@@ -2,7 +2,7 @@
 - 🔭 I’m currently working on RetailX.site<br><br>- 🌱 I’m currently learning **Front end Developer, AI Prompt engineer**<br><br>- 👨‍💻 All of my projects are available at [https://muhammedadnanavv.vercel.app/](https://muhammedadnanavv.vercel.app/)<br><br>- 💬 Ask me about **Html,Css,jaavascript**<br><br>- 📫 How to reach me **adnanmuhammad4393@gmail.com**<br><br>- 📄 Know about my experiences [https://pdf.ac/2sIQV1](https://pdf.ac/2sIQV1)<br><br>- ⚡ Fact **I Think Front End is The Best**
 <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="muhammedadnanvv" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/muhammedadnanvv/en?trk=profile-badge">Muhammad Adnan</a></div>
               
-- Donate Us thgough : https://comicfixsupportspark.vercel.app/
+- [![Donate me](https://i.ibb.co/YTQ0GstB/upi-payment-qr-1747635199082.png)]
 - <br> <h1> Iam Also A  Chief Visionary Architect At ComicFix.com </h1>
 
 
