@@ -1,128 +1,502 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Podcast Opinion Form</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .container {
-            max-width: 800px;
-        }
-        .error {
-            color: red;
-            font-size: 0.9em;
-            display: none;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Muhammed Adnan — Portfolio</title>
+  <meta name="description" content="Muhammed Adnan — Tech contractor: Websites, Business Automation, LinkedIn content systems." />
+  <style>
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root{
+      --bg: #f5f5f5;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #25D366;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --radius: 12px;
+    }
+
+    html,body { height:100%; }
+    body {
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.5;
+      -webkit-font-smoothing:antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Dark mode */
+    body.dark-mode {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --text: #e6eef8;
+      --muted: #9aa6b2;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      padding: 24px;
+    }
+
+    header {
+      text-align: center;
+      padding: 28px 12px 12px;
+    }
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      display: inline-block;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    h1 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin-bottom: 6px; }
+    .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 8px; }
+
+    /* Dark-mode toggle */
+    .toggle-btn {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1100;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.06);
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: transform .15s ease;
+    }
+    .toggle-btn:active { transform: scale(.98); }
+    .toggle-btn svg { display:block; width:18px; height:18px; }
+
+    /* Main */
+    main { width:100%; padding: 8px 0 48px; flex:1 0 auto; }
+    .lead {
+      max-width: 880px;
+      margin: 8px auto 28px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* Projects grid */
+    .projects {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-bottom: 36px;
+    }
+    .project {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      text-align: center;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .project:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .image-wrap { width:100%; aspect-ratio: 4 / 3; overflow:hidden; border-radius:8px; margin-bottom:12px; }
+    .image-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+    .project a.visit { display:inline-block; margin-top:8px; color: #0ea5a4; text-decoration: none; font-weight:600; }
+
+    /* Form */
+    .contact-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      max-width: 700px;
+      margin: 0 auto 36px;
+      box-shadow: var(--shadow);
+    }
+    .contact-card h2 { font-size: 1.15rem; margin-bottom: 8px; }
+    .contact-card p.note { color: var(--muted); margin-bottom:16px; font-size: 0.95rem; }
+
+    .field { margin-bottom:12px; }
+    label { display:block; font-size: 0.9rem; margin-bottom:6px; color:var(--muted); }
+    input[type="text"], textarea, select {
+      width:100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(15,23,36,0.08);
+      background: transparent;
+      color: inherit;
+      font-size: 1rem;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      width:100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    .btn:active{ transform: scale(.998); }
+
+    /* Widgetify (WhatsApp) */
+    .widgetify-widget {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.15);
+      z-index: 1200;
+      cursor:pointer;
+      border:none;
+    }
+    .widgetify-popup {
+      position: fixed;
+      right: 18px;
+      bottom: 90px;
+      width: 380px;
+      max-width: calc(100vw - 36px);
+      border-radius: 12px;
+      background: var(--card);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1200;
+    }
+    .widgetify-popup.show { display:flex; animation: fadeInUp .2s ease; }
+    .widgetify-header { padding:12px; background: rgba(0,0,0,0.03); display:flex; justify-content:space-between; align-items:center; }
+    .widgetify-content { padding: 12px; }
+    .widgetify-footer { padding: 12px; border-top: 1px solid rgba(0,0,0,0.04); display:flex; gap:8px; align-items:center; }
+    .widgetify-close { background:transparent; border: none; font-size: 20px; cursor:pointer; color:var(--muted); }
+
+    @keyframes fadeInUp { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none} }
+
+    footer { width:100%; text-align:center; padding:18px 12px; color:var(--muted); font-size:0.9rem; }
+    a[data-external] { color: inherit; text-decoration: underline; }
+
+    @media (max-width:520px){
+      .toggle-btn { top:12px; right:12px; padding:8px 10px; }
+      .avatar { width:110px; height:110px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Opinion on Starting a YouTube Podcast</h1>
-        <form id="opinionForm">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="name" class="form-label">Name (Optional):</label>
-                    <input type="text" id="name" name="name" class="form-control">
-                </div>
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Email (Optional):</label>
-                    <input type="email" id="email" name="email" class="form-control">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="interest" class="form-label">How interested are you in a YouTube podcast?</label>
-                <select id="interest" name="interest" class="form-select">
-                    <option value="very-interested">Very Interested</option>
-                    <option value="somewhat-interested">Somewhat Interested</option>
-                    <option value="not-very-interested">Not Very Interested</option>
-                    <option value="not-interested">Not Interested at All</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="topics" class="form-label">What topics would you like the podcast to cover?</label>
-                <textarea id="topics" name="topics" rows="4" class="form-control"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="format" class="form-label">Do you have any preferred formats for the podcast?</label>
-                <select id="format" name="format" class="form-select">
-                    <option value="interviews">Interviews</option>
-                    <option value="discussions">Discussions</option>
-                    <option value="qa">Q&A</option>
-                    <option value="reviews">Reviews</option>
-                    <option value="other">Other (Please specify)</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="frequency" class="form-label">How often would you like new episodes to be released?</label>
-                <select id="frequency" name="frequency" class="form-select">
-                    <option value="weekly">Weekly</option>
-                    <option value="bi-weekly">Bi-weekly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="other">Other (Please specify)</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="duration" class="form-label">What duration do you prefer for each episode?</label>
-                <select id="duration" name="duration" class="form-select">
-                    <option value="under-15-min">Under 15 minutes</option>
-                    <option value="15-30-min">15-30 minutes</option>
-                    <option value="30-60-min">30-60 minutes</option>
-                    <option value="over-60-min">Over 60 minutes</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="guests" class="form-label">Do you have any suggestions for potential guests or collaborators?</label>
-                <textarea id="guests" name="guests" rows="4" class="form-control"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="reasons" class="form-label">What are your main reasons for supporting or not supporting this idea?</label>
-                <textarea id="reasons" name="reasons" rows="4" class="form-control"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="comments" class="form-label">Any additional comments or ideas?</label>
-                <textarea id="comments" name="comments" rows="4" class="form-control"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="channel-name" class="form-label">Suggest a Name for the YouTube Podcast Channel:</label>
-                <input type="text" id="channel-name" name="channel-name" class="form-control">
-            </div>
-            <div class="d-grid gap-2">
-                <button type="button" class="btn btn-success" onclick="sendToWhatsApp()">Send to WhatsApp</button>
-            </div>
-            <div class="error mt-3" id="error-message">Please fill in all required fields.</div>
-        </form>
-    </div>
+  <!-- Dark-mode toggle -->
+  <button type="button" class="toggle-btn" id="darkToggle" aria-pressed="false" aria-label="Toggle dark mode">
+    <svg id="toggleIcon" viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
+      <!-- moon icon (default) -->
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"></path>
+    </svg>
+    <span id="toggleLabel" style="font-size:0.9rem; color:var(--muted)">Dark</span>
+  </button>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-    <script>
-        function sendToWhatsApp() {
-            const name = encodeURIComponent(document.getElementById('name').value.trim());
-            const email = encodeURIComponent(document.getElementById('email').value.trim());
-            const interest = encodeURIComponent(document.getElementById('interest').value);
-            const topics = encodeURIComponent(document.getElementById('topics').value.trim());
-            const format = encodeURIComponent(document.getElementById('format').value);
-            const frequency = encodeURIComponent(document.getElementById('frequency').value);
-            const duration = encodeURIComponent(document.getElementById('duration').value);
-            const guests = encodeURIComponent(document.getElementById('guests').value.trim());
-            const reasons = encodeURIComponent(document.getElementById('reasons').value.trim());
-            const comments = encodeURIComponent(document.getElementById('comments').value.trim());
-            const channelName = encodeURIComponent(document.getElementById('channel-name').value.trim());
+  <div class="container">
+    <header>
+      <div class="avatar" aria-hidden="true">
+        <img src="https://i.ibb.co/5XJH8yCs/Muhammed-Adnan.jpg" alt="Portrait of Muhammed Adnan">
+      </div>
+      <h1>Muhammed Adnan</h1>
+      <div class="subtitle">Tech Contractor • Websites • Business Automation • Content Writing Systems</div>
+    </header>
 
-            if (!interest || !topics || !format || !frequency || !duration || !reasons) {
-                document.getElementById('error-message').style.display = 'block';
-                return;
-            }
+    <main>
+      
 
-            const message = `Name: ${name}\nEmail: ${email}\nInterest: ${interest}\nTopics: ${topics}\nFormat: ${format}\nFrequency: ${frequency}\nDuration: ${duration}\nGuests: ${guests}\nReasons: ${reasons}\nComments: ${comments}\nSuggested Channel Name: ${channelName}`;
-            const phoneNumber = '+919656778508';
-            const url = `https://wa.me/${phoneNumber}?text=${message}`;
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading" style="text-align:center; margin-bottom:12px;">Projects with Lagger Technologies</h2>
+        <div class="projects" role="list">
+          <article class="project" role="listitem">
+            <a href="https://www.nodusmedia.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Nodus Media website">
+              <div class="image-wrap"><img src="https://i.ibb.co/3YQwnWct/nodus-media.jpg" alt="Nodus Media project screenshot"></div>
+            </a>
+            <a class="visit" href="https://www.nodusmedia.com" target="_blank" rel="noopener noreferrer" data-external>Visit Nodus Media</a>
+          </article>
 
-            window.open(url, '_blank');
+          <article class="project" role="listitem">
+            <a href="https://blackpearlassociates.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Black Pearl Associates website">
+              <div class="image-wrap"><img src="https://i.ibb.co/5xj4MxTw/blackpearl.jpg" alt="Black Pearl Associates project"></div>
+            </a>
+            <a class="visit" href="https://blackpearlassociates.com/" target="_blank" rel="noopener noreferrer" data-external>Visit Black Pearl</a>
+          </article>
+
+          <article class="project" role="listitem">
+            <a href="https://lagger.in/" target="_blank" rel="noopener noreferrer" aria-label="Visit Lagger Technologies website">
+              <div class="image-wrap"><img src="https://i.ibb.co/tppd1kHX/Screenshot-2025-08-07-211505.png" alt="Lagger Technologies project"></div>
+            </a>
+            <a class="visit" href="https://lagger.in/" target="_blank" rel="noopener noreferrer" data-external>Visit Lagger Technologies</a>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="projects-adweb-heading"> 
+  <h2 id="projects-adweb-heading" class="projects-title" style="text-align:center; margin-bottom:12px;">Projects with Ad Web Comic Agency</h2>
+  
+  <div class="projects" role="list">
+    
+    <article class="project" role="listitem">
+      <a href="https://acecsaudi.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit ACEC Saudi website">
+        <div class="image-wrap">
+          <img src="https://i.ibb.co/C3gwZvd0/Screenshot-2025-08-08-105506.png" alt="ACEC Saudi project preview">
+        </div>
+      </a>
+      <a class="visit" href="https://acecsaudi.com/" target="_blank" rel="noopener noreferrer" data-external>
+        Visit ACEC
+      </a>
+    </article>
+
+    <article class="project" role="listitem">
+      <a href="https://globalbestuae.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Global Best UAE website">
+        <div class="image-wrap">
+          <img src="https://i.ibb.co/Pszz5Zzt/Screenshot-2025-08-08-105723.png" alt="Global Best UAE project preview">
+        </div>
+      </a>
+      <a class="visit" href="https://globalbestuae.com/" target="_blank" rel="noopener noreferrer" data-external>
+        Visit Global Best UAE
+      </a>
+    </article>
+
+    <article class="project" role="listitem">
+      <a href="https://welcomemart.shop/" target="_blank" rel="noopener noreferrer" aria-label="Visit Welcome Mart website">
+        <div class="image-wrap">
+          <img src="https://i.ibb.co/xStQ52B6/Screenshot-2025-08-08-105915.png" alt="Welcome Mart project preview">
+        </div>
+      </a>
+      <a class="visit" href="https://welcomemart.shop/" target="_blank" rel="noopener noreferrer" data-external>
+        Visit Welcome Mart
+      </a>
+    </article>
+
+    <article class="project" role="listitem">
+      <a href="https://www.welcomeproperties.in/" target="_blank" rel="noopener noreferrer" aria-label="Visit Welcome Properties website">
+        <div class="image-wrap">
+          <img src="https://i.ibb.co/Q14ZHd7/Screenshot-2025-08-08-110327.png" alt="Welcome Properties project preview">
+        </div>
+      </a>
+      <a class="visit" href="https://www.welcomeproperties.in/" target="_blank" rel="noopener noreferrer" data-external>
+        Visit Welcome Properties
+      </a>
+    </article>
+
+  </div>
+</section>
+
+      <form id="whatsappForm" class="contact-card" aria-labelledby="contact-heading" novalidate>
+        <h2 id="contact-heading">Hire Me for Your Website Project</h2>
+        <p class="note">I work remotely. Typical starting price: ₹15,000 for a static website (final price depends on scope).</p>
+
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your full name">
+        </div>
+
+        <div class="field">
+          <label for="address">Address</label>
+          <input id="address" name="address" type="text" required placeholder="City, State / Country">
+        </div>
+
+        <div class="field">
+          <label for="business">Business name</label>
+          <input id="business" name="business" type="text" required placeholder="Your company or brand">
+        </div>
+
+        <div class="field">
+          <label for="type">Type of website</label>
+          <input id="type" name="type" type="text" required placeholder="e.g. Portfolio, Blog, Landing page">
+        </div>
+
+        <div class="field">
+          <label for="reason">Why do you want to hire me?</label>
+          <textarea id="reason" name="reason" required placeholder="Tell me about your project and goals"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="duration">Contract duration</label>
+          <select id="duration" name="duration" required>
+            <option value="1 month">1 month</option>
+            <option value="2 months">2 months</option>
+            <option value="4 months">4 months</option>
+            <option value="5 months">5 months</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn" aria-label="Send details to WhatsApp">
+          Send on WhatsApp
+        </button>
+      </form>
+    </main>
+
+    <!-- Widgetify WhatsApp floating button -->
+    <button id="widgetifyBtn" type="button" class="widgetify-widget" aria-expanded="false" aria-controls="widgetify-popup" aria-label="Open WhatsApp chat">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true">
+        <path d="M17.6 6.32A7.85 7.85 0 0 0 12 4.02a7.95 7.95 0 0 0-6.9 12.07L4 20.02l4.05-1.06A8.02 8.02 0 0 0 12 20.02a7.98 7.98 0 0 0 8-7.93c0-2.12-.83-4.12-2.4-5.62V6.32zM12 18.52c-1.18 0-2.33-.32-3.33-.92l-.24-.14-2.47.65.66-2.41-.16-.25a6.63 6.63 0 0 1-1.02-3.52 6.57 6.57 0 0 1 11.29-4.57 6.45 6.45 0 0 1 2 4.55 6.57 6.57 0 0 1-6.57 6.57z"/>
+      </svg>
+    </button>
+
+    <aside id="widgetify-popup" class="widgetify-popup" role="dialog" aria-modal="true" aria-labelledby="chat-title" aria-hidden="true">
+      <div class="widgetify-header">
+        <strong id="chat-title">WhatsApp Chat</strong>
+        <button class="widgetify-close" id="widgetCloseBtn" aria-label="Close chat">×</button>
+      </div>
+
+      <div class="widgetify-content">
+        <div style="background: rgba(0,0,0,0.03); padding:10px; border-radius:8px;">
+          <p style="margin:0; font-size:13px; color:var(--muted)">Hello Muhammed Adnan, I’m looking to bring you on as a tech contractor for key projects.</p>
+        </div>
+      </div>
+
+      <div class="widgetify-footer" style="padding-bottom:14px;">
+        <input id="widgetMessage" type="text" aria-label="Type a message" placeholder="Type a message..." style="flex:1; padding:9px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06)" />
+        <button id="openWhatsApp" class="btn" type="button" style="width:auto; padding:9px 12px;">Open WhatsApp</button>
+      </div>
+      <div style="padding:10px; text-align:center; font-size:12px; color:var(--muted); border-top:1px solid rgba(0,0,0,0.04); background: rgba(0,0,0,0.01);">
+        <a href="https://widgetify-two.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--muted); text-decoration:none; font-weight:500;">Powered by Widgetify</a>
+      </div>
+    </aside>
+
+    <footer aria-hidden="false">
+      &copy; <span id="year"></span> Muhammed Adnan. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      const phoneNumber = "919656778508"; // keep as international format (no +)
+      // --- Dark mode (persist)
+      const body = document.body;
+      const toggleBtn = document.getElementById('darkToggle');
+      const toggleLabel = document.getElementById('toggleLabel');
+      const toggleIcon = document.getElementById('toggleIcon');
+
+      // initialize from localStorage
+      const stored = localStorage.getItem('dark-mode');
+      if (stored === 'enabled') {
+        body.classList.add('dark-mode');
+        toggleBtn.setAttribute('aria-pressed','true');
+        toggleLabel.textContent = 'Light';
+        // swap to sun icon
+        toggleIcon.innerHTML = '<path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10 8h2v-3h-2v3zm7.03-15.16l-1.79-1.8-1.79 1.8 1.79 1.79 1.79-1.79zM17.24 19.16l1.79 1.79 1.79-1.79-1.79-1.79-1.79 1.79zM20 11v2h3v-2h-3zM11 4V1H9v3h2zM4.22 17.66l1.79-1.79L4.22 14.08l-1.79 1.79 1.79 1.79zM12 7a5 5 0 100 10 5 5 0 000-10z" fill="currentColor" />';
+      } else {
+        toggleLabel.textContent = 'Dark';
+        toggleIcon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" />';
+      }
+
+      toggleBtn.addEventListener('click', function(){
+        const isDark = body.classList.toggle('dark-mode');
+        toggleBtn.setAttribute('aria-pressed', String(isDark));
+        if (isDark) {
+          localStorage.setItem('dark-mode','enabled');
+          toggleLabel.textContent = 'Light';
+          toggleIcon.innerHTML = '<path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10 8h2v-3h-2v3zm7.03-15.16l-1.79-1.8-1.79 1.8 1.79 1.79 1.79-1.79zM17.24 19.16l1.79 1.79 1.79-1.79-1.79-1.79-1.79 1.79zM20 11v2h3v-2h-3zM11 4V1H9v3h2zM4.22 17.66l1.79-1.79L4.22 14.08l-1.79 1.79 1.79 1.79zM12 7a5 5 0 100 10 5 5 0 000-10z" fill="currentColor" />';
+        } else {
+          localStorage.setItem('dark-mode','disabled');
+          toggleLabel.textContent = 'Dark';
+          toggleIcon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" />';
         }
-    </script>
+      });
+
+      // --- Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // --- WhatsApp form submission
+      const form = document.getElementById('whatsappForm');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        // Validate minimal fields
+        const name = document.getElementById('name').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const business = document.getElementById('business').value.trim();
+        const type = document.getElementById('type').value.trim();
+        const reason = document.getElementById('reason').value.trim();
+        const duration = document.getElementById('duration').value;
+
+        if (!name || !business || !type || !reason) {
+          alert('Please complete the required fields.');
+          return;
+        }
+
+        const message = `Hi Muhammed Adnan, I want to give you a contract for a website project.%0A%0AFull Name: ${name}%0AAddress: ${address}%0ABusiness Name: ${business}%0AWebsite Type: ${type}%0AWhy: ${reason}%0AContract Duration: ${duration}%0A%0AI understand that you only work remotely and that the average starting charge is ₹15,000 per static website.`;
+        const url = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(url, '_blank', 'noopener');
+      });
+
+      // --- Widgetify popup
+      const widgetBtn = document.getElementById('widgetifyBtn');
+      const widgetPopup = document.getElementById('widgetify-popup');
+      const widgetClose = document.getElementById('widgetCloseBtn');
+      const widgetMessage = document.getElementById('widgetMessage');
+      const openWhatsApp = document.getElementById('openWhatsApp');
+
+      function openPopup() {
+        widgetPopup.classList.add('show');
+        widgetPopup.setAttribute('aria-hidden','false');
+        widgetBtn.setAttribute('aria-expanded','true');
+        widgetMessage.focus();
+      }
+      function closePopup() {
+        widgetPopup.classList.remove('show');
+        widgetPopup.setAttribute('aria-hidden','true');
+        widgetBtn.setAttribute('aria-expanded','false');
+        widgetBtn.focus();
+      }
+
+      widgetBtn.addEventListener('click', function(){ 
+        const shown = widgetPopup.classList.contains('show');
+        if (shown) closePopup(); else openPopup();
+      });
+      widgetClose.addEventListener('click', closePopup);
+
+      openWhatsApp.addEventListener('click', function(){
+        const text = widgetMessage.value.trim() || 'Hello Muhammed Adnan, I am interested in working with you.';
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener');
+      });
+
+      // Close popup on Escape
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') {
+          if (widgetPopup.classList.contains('show')) closePopup();
+        }
+      });
+
+      // Improve accessibility: trap focus within popup when open (simple)
+      widgetPopup.addEventListener('keydown', function(e){
+        if (e.key === 'Tab') {
+          // very small trap: ensure ESC works and focus does not leave first/last elements
+          const focusable = widgetPopup.querySelectorAll('input, button, [href], textarea, select');
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
+    })();
+  </script>
 </body>
 </html>
