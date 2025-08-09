@@ -362,33 +362,251 @@
       </form>
     </main>
 
-    <!-- Widgetify WhatsApp floating button -->
-    <button id="widgetifyBtn" type="button" class="widgetify-widget" aria-expanded="false" aria-controls="widgetify-popup" aria-label="Open WhatsApp chat">
-      <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true">
-        <path d="M17.6 6.32A7.85 7.85 0 0 0 12 4.02a7.95 7.95 0 0 0-6.9 12.07L4 20.02l4.05-1.06A8.02 8.02 0 0 0 12 20.02a7.98 7.98 0 0 0 8-7.93c0-2.12-.83-4.12-2.4-5.62V6.32zM12 18.52c-1.18 0-2.33-.32-3.33-.92l-.24-.14-2.47.65.66-2.41-.16-.25a6.63 6.63 0 0 1-1.02-3.52 6.57 6.57 0 0 1 11.29-4.57 6.45 6.45 0 0 1 2 4.55 6.57 6.57 0 0 1-6.57 6.57z"/>
-      </svg>
-    </button>
+   
+    <style>
+      /* Widgetify Core Styles - Responsive & Mobile-First */
+      .widgetify-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #25D366;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1000;
+        border: none;
+        outline: none;
+      }
 
-    <aside id="widgetify-popup" class="widgetify-popup" role="dialog" aria-modal="true" aria-labelledby="chat-title" aria-hidden="true">
-      <div class="widgetify-header">
-        <strong id="chat-title">WhatsApp Chat</strong>
-        <button class="widgetify-close" id="widgetCloseBtn" aria-label="Close chat">×</button>
-      </div>
+      .widgetify-widget:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
 
-      <div class="widgetify-content">
-        <div style="background: rgba(0,0,0,0.03); padding:10px; border-radius:8px;">
-          <p style="margin:0; font-size:13px; color:var(--muted)">Hello Muhammed Adnan, I’m looking to bring you on as a tech contractor for key projects.</p>
+      .widgetify-popup {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 400px;
+        max-width: 90vw;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        display: none;
+        flex-direction: column;
+        z-index: 999;
+        overflow: hidden;
+        border: 1px solid #e5e7eb;
+        padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .widgetify-popup.show {
+        display: flex;
+        animation: fadeInUp 0.3s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .widgetify-header {
+        background-color: #f3f4f6;
+        padding: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e5e7eb;
+        border-radius: 10px 10px 0 0;
+        margin: -20px -20px 0 -20px;
+      }
+
+      .widgetify-header h3 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      .widgetify-close {
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: #6b7280;
+        cursor: pointer;
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .widgetify-close:hover {
+        color: #374151;
+      }
+
+      .widgetify-watermark {
+        background-color: #f9fafb;
+        border-top: 1px solid #e5e7eb;
+        padding: 8px 12px;
+        text-align: center;
+        margin: 20px -20px -20px -20px;
+        border-radius: 0 0 10px 10px;
+      }
+
+      .widgetify-watermark a {
+        color: #6b7280;
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: 500;
+      }
+
+      .widgetify-watermark a:hover {
+        color: #374151;
+      }
+
+      /* UPI Gateway Specific Styles */
+      .upi-gateway-title {
+        margin: 16px 0 16px 0;
+        color: #1f2937;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .upi-gateway-qr {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #f3f4f6;
+        border-radius: 8px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .upi-gateway-details {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #374151;
+      }
+
+      .upi-gateway-button {
+        width: 100%;
+        padding: 16px 0;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+      }
+
+      .upi-gateway-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+      }
+
+      .upi-gateway-note {
+        margin: 16px 0 0 0;
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      /* Responsive Mobile Design */
+      @media (max-width: 480px) {
+        .widgetify-widget {
+          bottom: 15px;
+          right: 15px;
+        }
+        
+        .widgetify-popup {
+          bottom: 85px;
+          right: 15px;
+          max-width: calc(100vw - 30px) !important;
+          margin: 0 !important;
+          border-radius: 8px !important;
+          padding: 16px !important;
+        }
+        
+        .upi-gateway-title {
+          font-size: 18px !important;
+        }
+        
+        .upi-gateway-details {
+          font-size: 13px !important;
+        }
+        
+        .upi-gateway-button {
+          padding: 14px 0 !important;
+          font-size: 15px !important;
+        }
+        
+        .upi-gateway-qr {
+          width: 160px !important;
+          height: 160px !important;
+        }
+        
+        .upi-gateway-note {
+          font-size: 11px !important;
+        }
+      }
+    </style>
+  
+        <div id="widgetify-spotify" class="widgetify-widget" onclick="toggleWidgetifySpotify()" aria-label="Open Spotify Player">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.348-1.435-5.304-1.76-8.785-.964-.335.077-.67-.133-.746-.469-.077-.336.132-.67.469-.746 3.809-.871 7.077-.496 9.713 1.115.293.18.386.563.206.857zm1.223-2.723c-.226.367-.706.482-1.073.257-2.687-1.652-6.785-2.131-9.965-1.166-.413.125-.849-.106-.973-.518-.125-.413.106-.849.518-.973 3.632-1.102 8.147-.568 11.238 1.327.366.226.481.706.255 1.073zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71c-.493.15-1.016-.128-1.166-.62-.149-.493.129-1.016.621-1.166 3.532-1.073 9.404-.865 13.115 1.338.445.264.590.837.326 1.282-.264.444-.838.590-1.282.325z"/>
+          </svg>
         </div>
-      </div>
 
-      <div class="widgetify-footer" style="padding-bottom:14px;">
-        <input id="widgetMessage" type="text" aria-label="Type a message" placeholder="Type a message..." style="flex:1; padding:9px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06)" />
-        <button id="openWhatsApp" class="btn" type="button" style="width:auto; padding:9px 12px;">Open WhatsApp</button>
-      </div>
-      <div style="padding:10px; text-align:center; font-size:12px; color:var(--muted); border-top:1px solid rgba(0,0,0,0.04); background: rgba(0,0,0,0.01);">
-        <a href="https://widgetify-two.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--muted); text-decoration:none; font-weight:500;">Powered by Widgetify</a>
-      </div>
-    </aside>
+        <div id="widgetify-spotify-popup" class="widgetify-popup" role="dialog" aria-labelledby="spotify-title" style="width: 400px; height: auto;">
+          <div class="widgetify-header">
+            <h3 id="spotify-title">Spotify Music Player</h3>
+            <button class="widgetify-close" onclick="toggleWidgetifySpotify()" aria-label="Close player">×</button>
+          </div>
+          <div class="widgetify-content" style="padding: 0;">
+            
+              <iframe
+                src="https://open.spotify.com/embed/album/4Jw6MGsXoKxyQ3TgUzMjCR"
+                width="100%"
+                height="152"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                style="border-radius: 0 0 10px 10px;"
+              ></iframe>
+            
+          </div>
+          <div class="widgetify-watermark">
+            <a href="https://widgetify-two.vercel.app" target="_blank">Powered by Widgetify</a>
+          </div>
+        </div>
+
+        <script>
+          function toggleWidgetifySpotify() {
+            const popup = document.getElementById('widgetify-spotify-popup');
+            popup.classList.toggle('show');
+          }
+        </script>
+
+   
 
     <footer aria-hidden="false">
       &copy; <span id="year"></span> Muhammed Adnan. All rights reserved.
