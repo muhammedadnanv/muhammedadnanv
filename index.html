@@ -326,10 +326,35 @@
 
   </div>
 </section>
+    <section id="pricing" style="
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  padding: 40px 20px;
+">
+  <div style="max-width: 800px; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Project Pricing</h2>
+    <div style="display: grid; gap: 20px; font-size: 1.4rem;">
+      <p><strong>Small Projects :</strong> ₹10,000 + Requirement Charges</p>
+      <p><strong>Medium Projects :</strong> ₹25,000 + Requirement Charges</p>
+      <p><strong>Large Projects :</strong> ₹37,000 + Requirement Charges</p>
+    </div>
+  </div>
+</section>
 
+
+      
       <form id="whatsappForm" class="contact-card" aria-labelledby="contact-heading" novalidate>
         <h2 id="contact-heading">Hire Me for Your Website Project</h2>
-        <p class="note">I work remotely. Typical starting price: ₹15,000 for a static website (final price depends on scope).</p>
+        <p class="note">I work remotely.</p>
 
         <div class="field">
           <label for="name">Full name</label>
@@ -679,7 +704,7 @@
           return;
         }
 
-        const message = `Hi Muhammed Adnan, I want to give you a contract for a website project.%0A%0AFull Name: ${name}%0AAddress: ${address}%0ABusiness Name: ${business}%0AWebsite Type: ${type}%0AWhy: ${reason}%0AContract Duration: ${duration}%0A%0AI understand that you only work remotely and that the average starting charge is ₹15,000 per static website.`;
+        const message = `Hi Muhammed Adnan, I want to give you a contract for a website project.%0A%0AFull Name: ${name}%0AAddress: ${address}%0ABusiness Name: ${business}%0AWebsite Type: ${type}%0AWhy: ${reason}%0AContract Duration: ${duration}%0A%0AI understand that you only work remotely`;
         const url = `https://wa.me/${phoneNumber}?text=${message}`;
         window.open(url, '_blank', 'noopener');
       });
