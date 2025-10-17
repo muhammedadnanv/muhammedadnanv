@@ -1,5 +1,5 @@
 # 💫 About Me:
-[![Watch the video](https://img.youtube.com/vi/f4WlwKWyFRM/0.jpg)](https://www.youtube.com/watch?v=f4WlwKWyFRM)
+
 
 
 <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="muhammedadnanvv" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/muhammedadnanvv/en?trk=profile-badge">Muhammad Adnan</a></div>
