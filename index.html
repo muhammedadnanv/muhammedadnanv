@@ -1,516 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Muhammed Adnan — Portfolio</title>
-  <meta name="description" content="Muhammed Adnan — Tech contractor: Websites, Business Automation, LinkedIn content systems." />
-  <link rel="shortcut icon" href="https://i.ibb.co/5XJH8yCs/Muhammed-Adnan.jpg" type="image/x-icon">
-   <link rel="icon" type="image/x-icon" href="/Muhammed adnan.png">
-  <style>
-    /* Base reset */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root{
-      --bg: #f5f5f5;
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --accent: #25D366;
-      --shadow: 0 4px 12px rgba(0,0,0,0.08);
-      --radius: 12px;
-    }
-
-    html,body { height:100%; }
-    body {
-      min-height: 100vh;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1.5;
-      -webkit-font-smoothing:antialiased;
-      transition: background-color 0.25s ease, color 0.25s ease;
-    }
-
-    /* Dark mode */
-    body.dark-mode {
-      --bg: #0f1724;
-      --card: #0b1220;
-      --text: #e6eef8;
-      --muted: #9aa6b2;
-    }
-
-    /* Container */
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      padding: 24px;
-    }
-
-    header {
-      text-align: center;
-      padding: 28px 12px 12px;
-    }
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      display: inline-block;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-    }
-    .avatar img { width:100%; height:100%; object-fit:cover; display:block; }
-
-    h1 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin-bottom: 6px; }
-    .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 8px; }
-
-    /* Dark-mode toggle */
-    .toggle-btn {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      z-index: 1100;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      border: 1px solid rgba(0,0,0,0.06);
-      padding: 10px 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      backdrop-filter: blur(6px);
-      transition: transform .15s ease;
-    }
-    .toggle-btn:active { transform: scale(.98); }
-    .toggle-btn svg { display:block; width:18px; height:18px; }
-
-    /* Main */
-    main { width:100%; padding: 8px 0 48px; flex:1 0 auto; }
-    .lead {
-      max-width: 880px;
-      margin: 8px auto 28px;
-      text-align:center;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    /* Projects grid */
-    .projects {
-      display: grid;
-      gap: 22px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      margin-bottom: 36px;
-    }
-    .project {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      text-align: center;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .project:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-    .image-wrap { width:100%; aspect-ratio: 4 / 3; overflow:hidden; border-radius:8px; margin-bottom:12px; }
-    .image-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
-    .project a.visit { display:inline-block; margin-top:8px; color: #0ea5a4; text-decoration: none; font-weight:600; }
-
-    /* Form */
-    .contact-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 20px;
-      max-width: 700px;
-      margin: 0 auto 36px;
-      box-shadow: var(--shadow);
-    }
-    .contact-card h2 { font-size: 1.15rem; margin-bottom: 8px; }
-    .contact-card p.note { color: var(--muted); margin-bottom:16px; font-size: 0.95rem; }
-
-    .field { margin-bottom:12px; }
-    label { display:block; font-size: 0.9rem; margin-bottom:6px; color:var(--muted); }
-    input[type="text"], textarea, select {
-      width:100%;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(15,23,36,0.08);
-      background: transparent;
-      color: inherit;
-      font-size: 1rem;
-    }
-    textarea { min-height: 110px; resize: vertical; }
-
-    .btn {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      width:100%;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 12px 14px;
-      border-radius: 8px;
-      font-weight:600;
-      cursor:pointer;
-    }
-    .btn:active{ transform: scale(.998); }
-
-    /* Widgetify (WhatsApp) */
-    .widgetify-widget {
-      position: fixed;
-      bottom: 18px;
-      right: 18px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: inline-flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 8px 26px rgba(0,0,0,0.15);
-      z-index: 1200;
-      cursor:pointer;
-      border:none;
-    }
-    .widgetify-popup {
-      position: fixed;
-      right: 18px;
-      bottom: 90px;
-      width: 380px;
-      max-width: calc(100vw - 36px);
-      border-radius: 12px;
-      background: var(--card);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 1200;
-    }
-    .widgetify-popup.show { display:flex; animation: fadeInUp .2s ease; }
-    .widgetify-header { padding:12px; background: rgba(0,0,0,0.03); display:flex; justify-content:space-between; align-items:center; }
-    .widgetify-content { padding: 12px; }
-    .widgetify-footer { padding: 12px; border-top: 1px solid rgba(0,0,0,0.04); display:flex; gap:8px; align-items:center; }
-    .widgetify-close { background:transparent; border: none; font-size: 20px; cursor:pointer; color:var(--muted); }
-
-    @keyframes fadeInUp { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none} }
-
-    footer { width:100%; text-align:center; padding:18px 12px; color:var(--muted); font-size:0.9rem; }
-    a[data-external] { color: inherit; text-decoration: underline; }
-
-    @media (max-width:520px){
-      .toggle-btn { top:12px; right:12px; padding:8px 10px; }
-      .avatar { width:110px; height:110px; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Dark-mode toggle -->
-  <button type="button" class="toggle-btn" id="darkToggle" aria-pressed="false" aria-label="Toggle dark mode">
-    <svg id="toggleIcon" viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
-      <!-- moon icon (default) -->
-      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"></path>
-    </svg>
-    <span id="toggleLabel" style="font-size:0.9rem; color:var(--muted)">Dark</span>
-  </button>
-
-  <div class="container">
-    <header>
-      <div class="avatar" aria-hidden="true">
-        <img src="/Muhammed adnan.png" alt="Portrait of Muhammed Adnan">
-      </div>
-      <h1>Muhammed Adnan</h1>
-      <div class="subtitle">Tech Contractor • Websites • Business Automation • Content Writing Systems</div>
-    </header>
-
-    <main>
-      
-
-      <section aria-labelledby="projects-heading">
-        <h2 id="projects-heading" style="text-align:center; margin-bottom:12px;">Projects with Lagger Technologies</h2>
-        <div class="projects" role="list">
-          <article class="project" role="listitem">
-            <a href="https://noduscommune.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Nodus Media website">
-              <div class="image-wrap"><img src="https://i.ibb.co/3YQwnWct/nodus-media.jpg" alt="Nodus Media project screenshot"></div>
-            </a>
-            <a class="visit" href="https://noduscommune.com/" target="_blank" rel="noopener noreferrer" data-external>Visit Nodus Media</a>
-          </article>
-          
-             <article class="project" role="listitem">
-      <a href="https://motiontape.in/" target="_blank" rel="noopener noreferrer" aria-label="Visit MotionTape">
-        <div class="image-wrap">
-          <img src="https://i.ibb.co/Z6GcdL8m/image.png" alt="MotionTape">
-        </div>
-      </a>
-      <a class="visit" href="https://motiontape.in/" target="_blank" rel="noopener noreferrer" data-external>
-        Visit MotionTape
-      </a>
-    </article>
-          <article class="project" role="listitem">
-            <a href="https://blackpearlassociates.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Black Pearl Associates website">
-              <div class="image-wrap"><img src="https://i.ibb.co/5xj4MxTw/blackpearl.jpg" alt="Black Pearl Associates project"></div>
-            </a>
-            <a class="visit" href="https://blackpearlassociates.com/" target="_blank" rel="noopener noreferrer" data-external>Visit Black Pearl</a>
-          </article>
-
-          <article class="project" role="listitem">
-            <a href="https://lagger.in/" target="_blank" rel="noopener noreferrer" aria-label="Visit Lagger Technologies website">
-              <div class="image-wrap"><img src="https://i.ibb.co/tppd1kHX/Screenshot-2025-08-07-211505.png" alt="Lagger Technologies project"></div>
-            </a>
-            <a class="visit" href="https://lagger.in/" target="_blank" rel="noopener noreferrer" data-external>Visit Lagger Technologies</a>
-          </article>
-        </div>
-      </section>
-
-      <section aria-labelledby="projects-adweb-heading"> 
-  <h2 id="projects-adweb-heading" class="projects-title" style="text-align:center; margin-bottom:12px;">Projects with Ad Web Comic Agency</h2>
-  
-  <div class="projects" role="list">
-    
-    <article class="project" role="listitem">
-      <a href="https://acecsaudi.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit ACEC Saudi website">
-        <div class="image-wrap">
-          <img src="https://i.ibb.co/C3gwZvd0/Screenshot-2025-08-08-105506.png" alt="ACEC Saudi project preview">
-        </div>
-      </a>
-      <a class="visit" href="https://acecsaudi.com/" target="_blank" rel="noopener noreferrer" data-external>
-        Visit ACEC
-      </a>
-    </article>
-       <article class="project" role="listitem">
-      <a href="https://www.idcinteriorstudio.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit IDC INterio website">
-        <div class="image-wrap">
-          <img src="https://i.ibb.co/27tJkCjT/Screenshot-2025-08-08-130700.png" alt=" IDC Interior Studio project preview">
-        </div>
-      </a>
-      <a class="visit" href="https://www.idcinteriorstudio.com/" target="_blank" rel="noopener noreferrer" data-external>
-        Visit IDC Interior Studio
-      </a>
-    </article>
-
-    <article class="project" role="listitem">
-      <a href="https://globalbestuae.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Global Best UAE website">
-        <div class="image-wrap">
-          <img src="https://i.ibb.co/Pszz5Zzt/Screenshot-2025-08-08-105723.png" alt="Global Best UAE project preview">
-        </div>
-      </a>
-      <a class="visit" href="https://globalbestuae.com/" target="_blank" rel="noopener noreferrer" data-external>
-        Visit Global Best UAE
-      </a>
-    </article>
-
-    <article class="project" role="listitem">
-      <a href="https://welcomemart.shop/" target="_blank" rel="noopener noreferrer" aria-label="Visit Welcome Mart website">
-        <div class="image-wrap">
-          <img src="https://i.ibb.co/xStQ52B6/Screenshot-2025-08-08-105915.png" alt="Welcome Mart project preview">
-        </div>
-      </a>
-      <a class="visit" href="https://welcomemart.shop/" target="_blank" rel="noopener noreferrer" data-external>
-        Visit Welcome Mart
-      </a>
-    </article>
-
-    <article class="project" role="listitem">
-      <a href="https://www.welcomeproperties.in/" target="_blank" rel="noopener noreferrer" aria-label="Visit Welcome Properties website">
-        <div class="image-wrap">
-          <img src="https://i.ibb.co/Q14ZHd7/Screenshot-2025-08-08-110327.png" alt="Welcome Properties project preview">
-        </div>
-      </a>
-      <a class="visit" href="https://www.welcomeproperties.in/" target="_blank" rel="noopener noreferrer" data-external>
-        Visit Welcome Properties
-      </a>
-    </article>
-
-  </div>
-</section>
-   <section id="pricing" style="
-  min-height: 100vh;
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 0.25s ease, color 0.25s ease;
-  padding: 60px 20px;
-">
-  <div style="max-width: 1100px; width: 100%; text-align: center;">
-    <h2 style="font-size: 2.8rem; margin-bottom: 50px; font-weight: 700;">
-      Project Pricing
-    </h2>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-      
-      <!-- Small Projects -->
-      <a href="https://api.whatsapp.com/send/?phone=919656778508" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 16px;
-          padding: 40px 25px;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          cursor: pointer;
-        " 
-        onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 28px rgba(0,0,0,0.3)';" 
-        onmouseout="this.style.transform=''; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.2)';">
-          <h3 style="font-size: 1.5rem; margin-bottom: 10px; font-weight: 600;">Small Projects</h3>
-          <p style="font-size: 2rem; font-weight: 700; color: #4ade80; margin: 10px 0;">₹25,000+</p>
-          <p style="font-size: 1rem; opacity: 0.8;">Plus Requirement Charges</p>
-        </div>
-      </a>
-
-      <!-- Medium Projects -->
-      <a href="https://api.whatsapp.com/send/?phone=919656778508" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="
-          background: rgba(255, 255, 255, 0.08);
-          border: 2px solid #4ade80;
-          border-radius: 16px;
-          padding: 40px 25px;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          cursor: pointer;
-        " 
-        onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 28px rgba(0,0,0,0.35)';" 
-        onmouseout="this.style.transform=''; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.25)';">
-          <h3 style="font-size: 1.5rem; margin-bottom: 10px; font-weight: 600;">Medium Projects</h3>
-          <p style="font-size: 2rem; font-weight: 700; color: #4ade80; margin: 10px 0;">₹35,000+</p>
-          <p style="font-size: 1rem; opacity: 0.8;">Plus Requirement Charges</p>
-        </div>
-      </a>
-
-      <!-- Large Projects -->
-      <a href="https://api.whatsapp.com/send/?phone=919656778508" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 16px;
-          padding: 40px 25px;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          cursor: pointer;
-        " 
-        onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 28px rgba(0,0,0,0.3)';" 
-        onmouseout="this.style.transform=''; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.2)';">
-          <h3 style="font-size: 1.5rem; margin-bottom: 10px; font-weight: 600;">Large Projects</h3>
-          <p style="font-size: 2rem; font-weight: 700; color: #4ade80; margin: 10px 0;">₹67,000+</p>
-          <p style="font-size: 1rem; opacity: 0.8;">Plus Requirement Charges</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-      <section id="tools" style="
-  min-height: 60vh;
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 0.25s ease, color 0.25s ease;
-  padding: 60px 20px;
-">
-  <div style="max-width: 1000px; width: 100%; text-align: center;">
-    <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Tools I Work With</h2>
-    
-    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; font-size: 1rem;">
-      
-      <!-- Frontend -->
-      <div style="flex: 1; min-width: 250px;">
-        <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Frontend</h3>
-        <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-          <div style="text-align: center;">
-            <img src="/lovable.png" alt="Lovable" width="50"><br>
-            Lovable
-          </div>
-        </div>
-      </div>
-      
-      <!-- Backend -->
-      <div style="flex: 1; min-width: 250px;">
-        <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Backend</h3>
-        <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-          <div style="text-align: center;">
-            <img src="/supabase.png" alt="Supabase" width="50"><br>
-            Supabase
-          </div>
-        </div>
-      </div>
-      
-      <!-- AI -->
-      <div style="flex: 1; min-width: 250px;">
-        <h3 style="font-size: 1.5rem; margin-bottom: 20px;">AI</h3>
-        <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-          <div style="text-align: center;">
-            <img src="gemini.png" alt="Gemini" width="50"><br>
-            Gemini
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</section>
-
-
-      
-      <form id="whatsappForm" class="contact-card" aria-labelledby="contact-heading" novalidate>
-        <h2 id="contact-heading">Hire Me for Your Website Project</h2>
-        <p class="note">I work remotely.</p>
-
-        <div class="field">
-          <label for="name">Full name</label>
-          <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your full name">
-        </div>
-
-        <div class="field">
-          <label for="address">Address</label>
-          <input id="address" name="address" type="text" required placeholder="City, State / Country">
-        </div>
-
-        <div class="field">
-          <label for="business">Business name</label>
-          <input id="business" name="business" type="text" required placeholder="Your company or brand">
-        </div>
-
-        <div class="field">
-          <label for="type">Type of website</label>
-          <input id="type" name="type" type="text" required placeholder="e.g. Portfolio, Blog, Landing page">
-        </div>
-
-        <div class="field">
-          <label for="reason">Why do you want to hire me?</label>
-          <textarea id="reason" name="reason" required placeholder="Tell me about your project and goals"></textarea>
-        </div>
-
-        <div class="field">
-          <label for="duration">Contract duration</label>
-          <select id="duration" name="duration" required>
-            <option value="1 month">1 month</option>
-            <option value="2 months">2 months</option>
-            <option value="4 months">4 months</option>
-            <option value="5 months">5 months</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn" aria-label="Send details to WhatsApp">
-          Send on WhatsApp
-        </button>
-      </form>
-    </main>
-
-   
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Adnan | Tech Contractor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+ 
     <style>
       /* Widgetify Core Styles - Responsive & Mobile-First */
       .widgetify-widget {
@@ -519,7 +30,7 @@
         right: 20px;
         width: 60px;
         height: 60px;
-        background-color: #25D366;
+        background-color: #0033ff;
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -718,163 +229,753 @@
       }
     </style>
   
-        <div id="widgetify-spotify" class="widgetify-widget" onclick="toggleWidgetifySpotify()" aria-label="Open Spotify Player">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
-            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.348-1.435-5.304-1.76-8.785-.964-.335.077-.67-.133-.746-.469-.077-.336.132-.67.469-.746 3.809-.871 7.077-.496 9.713 1.115.293.18.386.563.206.857zm1.223-2.723c-.226.367-.706.482-1.073.257-2.687-1.652-6.785-2.131-9.965-1.166-.413.125-.849-.106-.973-.518-.125-.413.106-.849.518-.973 3.632-1.102 8.147-.568 11.238 1.327.366.226.481.706.255 1.073zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71c-.493.15-1.016-.128-1.166-.62-.149-.493.129-1.016.621-1.166 3.532-1.073 9.404-.865 13.115 1.338.445.264.590.837.326 1.282-.264.444-.838.590-1.282.325z"/>
-          </svg>
-        </div>
+        <style>
+          /* Lead Capture Popup Styles */
+          .lead-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(5px);
+          }
+          
+          .lead-popup-overlay.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+          }
+          
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          
+          .lead-popup-container {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 420px;
+            width: 90%;
+            margin: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: slideUp 0.3s ease;
+          }
+          
+          @keyframes slideUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          
+          .lead-popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #9ca3af;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+          }
+          
+          .lead-popup-close:hover {
+            background: #f3f4f6;
+            color: #374151;
+          }
+          
+          .lead-popup-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.2;
+          }
+          
+          .lead-popup-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.4;
+          }
+          
+          .lead-form-field {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.2s ease;
+            font-family: inherit;
+          }
+          
+          .lead-form-field:focus {
+            border-color: #0033ff;
+            box-shadow: 0 0 0 3px #0033ff20;
+          }
+          
+          .lead-form-button {
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #0033ff 0%, #0033ffdd 100%);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+          }
+          
+          .lead-form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px #0033ff40;
+          }
+          
+          .lead-form-button:active {
+            transform: translateY(0);
+          }
+          
+          .lead-popup-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+          }
+          
+          .lead-popup-footer a {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+          }
+          
+          .lead-popup-footer a:hover {
+            color: #374151;
+          }
+          
+          /* Mobile Responsive */
+          @media (max-width: 480px) {
+            .lead-popup-container {
+              padding: 24px;
+              margin: 10px;
+              border-radius: 12px;
+            }
+            
+            .lead-popup-title {
+              font-size: 20px;
+            }
+            
+            .lead-popup-subtitle {
+              font-size: 14px;
+            }
+            
+            .lead-form-field {
+              padding: 14px;
+              font-size: 16px;
+            }
+            
+            .lead-form-button {
+              padding: 14px 20px;
+            }
+          }
+        </style>
 
-        <div id="widgetify-spotify-popup" class="widgetify-popup" role="dialog" aria-labelledby="spotify-title" style="width: 400px; height: auto;">
-          <div class="widgetify-header">
-            <h3 id="spotify-title">Spotify Music Player</h3>
-            <button class="widgetify-close" onclick="toggleWidgetifySpotify()" aria-label="Close player">×</button>
-          </div>
-          <div class="widgetify-content" style="padding: 0;">
+        <div id="lead-capture-overlay" class="lead-popup-overlay" onclick="closeLeadPopup(event)">
+          <div class="lead-popup-container" onclick="event.stopPropagation()">
+            <button class="lead-popup-close" onclick="closeLeadPopup()" aria-label="Close popup">×</button>
             
-              <iframe
-                src="https://open.spotify.com/embed/album/4Jw6MGsXoKxyQ3TgUzMjCR"
-                width="100%"
-                height="152"
-                frameborder="0"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                style="border-radius: 0 0 10px 10px;"
-              ></iframe>
+            <h2 class="lead-popup-title">Get Your Free Consultation</h2>
+            <p class="lead-popup-subtitle">Leave your details and we&#x27;ll contact you soon</p>
             
-          </div>
-          <div class="widgetify-watermark">
-            <a href="https://widgetify-two.vercel.app" target="_blank">Powered by Widgetify</a>
+            <form id="lead-capture-form" onsubmit="submitLeadForm(event)">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Full Name *"
+                required
+                class="lead-form-field"
+              />
+              
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Your Phone Number *"
+                required
+                class="lead-form-field"
+              />
+              
+              <input
+                type="text"
+                name="address"
+                placeholder="Your Address"
+                class="lead-form-field"
+              />
+              
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                rows="3"
+                class="lead-form-field"
+                style="resize: vertical; min-height: 80px;"
+              ></textarea>
+              
+              <button type="submit" class="lead-form-button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.6 6.32A7.85 7.85 0 0 0 12 4.02a7.95 7.95 0 0 0-6.9 12.07L4 20.02l4.05-1.06A8.02 8.02 0 0 0 12 20.02a7.98 7.98 0 0 0 8-7.93c0-2.12-.83-4.12-2.4-5.62V6.32z"/>
+                </svg>
+                Send My Details
+              </button>
+            </form>
+            
+            <div class="lead-popup-footer">
+              <a href="https://widgetify-two.vercel.app" target="_blank">Powered by Widgetify</a>
+            </div>
           </div>
         </div>
 
         <script>
-          function toggleWidgetifySpotify() {
-            const popup = document.getElementById('widgetify-spotify-popup');
-            popup.classList.toggle('show');
+          // Auto-show popup after delay
+          setTimeout(function() {
+            const popup = document.getElementById('lead-capture-overlay');
+            if (popup && !localStorage.getItem('leadPopupShown')) {
+              popup.classList.add('show');
+            }
+          }, 5000);
+
+          function closeLeadPopup(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const popup = document.getElementById('lead-capture-overlay');
+            popup.classList.remove('show');
+            localStorage.setItem('leadPopupShown', 'true');
+          }
+
+          function submitLeadForm(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const address = formData.get('address');
+            const message = formData.get('message');
+            
+            let leadMessage = '🎯 *New Lead Captured!*\n\n';
+            leadMessage += '👤 *Name:* ' + name + '\n';
+            leadMessage += '📱 *Phone:* ' + phone + '\n';
+            
+            if (address) {
+              leadMessage += '🏠 *Address:* ' + address + '\n';
+            }
+            
+            if (message) {
+              leadMessage += '💬 *Message:* ' + message + '\n';
+            }
+            
+            leadMessage += '\n⏰ *Time:* ' + new Date().toLocaleString();
+            leadMessage += '\n\n_Generated via Widgetify Lead Capture_';
+            
+            const whatsappUrl = 'https://wa.me/9656778508?text=' + encodeURIComponent(leadMessage);
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message and close popup
+            alert('✅ Thank you! Your details have been sent successfully. We will contact you soon!');
+            closeLeadPopup();
+            
+            // Reset form
+            event.target.reset();
+          }
+          
+          // Prevent showing popup if already shown in this session
+          if (localStorage.getItem('leadPopupShown')) {
+            // Optional: Clear after 24 hours
+            const lastShown = localStorage.getItem('leadPopupShownTime');
+            const now = new Date().getTime();
+            if (!lastShown || (now - parseInt(lastShown)) > 24 * 60 * 60 * 1000) {
+              localStorage.removeItem('leadPopupShown');
+            }
           }
         </script>
+</head>
+<body class="bg-[#050505] text-slate-400 antialiased selection:bg-slate-200 selection:text-black overflow-x-hidden">
 
-   
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-white tracking-tighter font-medium text-lg flex items-center gap-2">
+                <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center text-black text-xs font-bold">M</div>
+                ADNAN
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="#contact" class="bg-white text-black px-4 py-2 rounded-full hover:bg-slate-200 transition-colors">Hire Me</a>
+            </div>
+        </div>
+    </nav>
 
-    <footer aria-hidden="false">
-      &copy; <span id="year"></span> Muhammed Adnan. All rights reserved.
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20">
+        <!-- Background Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-96 bg-white/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
+        <div class="flex-1 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-slate-300 mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                Available for Contract
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight leading-[1.1] mb-6">
+                Tech Contractor <br>
+                <span class="text-gradient">• Websites</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-400 font-light max-w-xl mx-auto md:mx-0 leading-relaxed mb-8">
+                I build scalable, high-performance web solutions for startups and global agencies. Reliable remote contracting with a focus on precision and conversion.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 bg-white text-black rounded-lg font-medium hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">
+                    Start Your Project
+                    <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+                </a>
+                <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 border border-white/10 text-white rounded-lg font-medium hover:bg-white/5 transition-colors flex items-center justify-center gap-2">
+                    View Work
+                </a>
+            </div>
+        </div>
+
+        <div class="relative w-full max-w-sm md:max-w-md">
+            <!-- Portrait Image Placeholder -->
+            <div class="aspect-[4/5] rounded-2xl overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 border border-white/10 group">
+                <img src="https://i.ibb.co/jPPB5LdX/download.png" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-6 left-6">
+                    <p class="text-white font-medium text-lg">Muhammed Adnan</p>
+                    <p class="text-slate-400 text-sm">Remote Contractor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="border-y border-white/5 bg-white/[0.02]">
+        <div class="max-w-6xl mx-auto px-6 py-12">
+            <p class="text-center text-sm font-medium text-slate-500 mb-8 uppercase tracking-widest">Powering Solutions With</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 items-center opacity-80">
+                
+                <div class="flex items-center gap-3 group">
+                    <div class="p-2 bg-white/5 rounded-lg border border-white/10 text-pink-400 group-hover:border-pink-500/50 transition-colors">
+                        <iconify-icon icon="solar:code-square-linear" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <span class="block text-white font-medium text-sm">Lovable</span>
+                        <span class="text-xs text-slate-500">Frontend</span>
+                    </div>
+                </div>
+
+                <div class="w-px h-8 bg-white/10 hidden md:block"></div>
+
+                <div class="flex items-center gap-3 group">
+                    <div class="p-2 bg-white/5 rounded-lg border border-white/10 text-emerald-400 group-hover:border-emerald-500/50 transition-colors">
+                        <iconify-icon icon="solar:database-linear" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <span class="block text-white font-medium text-sm">Supabase</span>
+                        <span class="text-xs text-slate-500">Backend</span>
+                    </div>
+                </div>
+
+                <div class="w-px h-8 bg-white/10 hidden md:block"></div>
+
+                <div class="flex items-center gap-3 group">
+                    <div class="p-2 bg-white/5 rounded-lg border border-white/10 text-blue-400 group-hover:border-blue-500/50 transition-colors">
+                        <iconify-icon icon="solar:stars-minimalistic-linear" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <span class="block text-white font-medium text-sm">Gemini</span>
+                        <span class="text-xs text-slate-500">Artificial Intelligence</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+                <h2 class="text-3xl font-semibold text-white tracking-tight mb-2">Selected Work</h2>
+                <p class="text-slate-400 font-light">Contracted projects delivering value and scale.</p>
+            </div>
+            <a href="#" class="text-sm text-white border-b border-white/30 pb-0.5 hover:border-white transition-colors">View all projects</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Project 1: Nyla Interiors -->
+            <div class="glass-panel rounded-2xl p-1 group hover:-translate-y-1 transition-transform duration-300">
+                <div class="bg-[#111] rounded-xl aspect-[4/3] relative overflow-hidden mb-4">
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-600 bg-gradient-to-tr from-rose-950 to-slate-900">
+                        <span class="text-2xl font-semibold tracking-tighter opacity-30">Nyla</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <a href="https://www.nylainteriors.in/" target="_blank" class="bg-white text-black px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Visit Nyla Interiors <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-white font-medium text-lg tracking-tight">Nyla Interiors</h3>
+                    <p class="text-sm text-slate-500 mt-1">Interior Design Portfolio</p>
+                </div>
+            </div>
+
+            <!-- Project 2: IDC Studio -->
+            <div class="glass-panel rounded-2xl p-1 group hover:-translate-y-1 transition-transform duration-300">
+                <div class="bg-[#111] rounded-xl aspect-[4/3] relative overflow-hidden mb-4">
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-600 bg-gradient-to-tr from-stone-900 to-stone-800">
+                        <span class="text-2xl font-semibold tracking-tighter opacity-30">IDC</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <a href="https://www.idcinteriorstudio.com/" target="_blank" class="bg-white text-black px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Visit IDC Studio <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-white font-medium text-lg tracking-tight">IDC Interior Studio</h3>
+                    <p class="text-sm text-slate-500 mt-1">Architecture &amp; Design</p>
+                </div>
+            </div>
+
+            <!-- Project 3: Global Best UAE -->
+            <div class="glass-panel rounded-2xl p-1 group hover:-translate-y-1 transition-transform duration-300">
+                <div class="bg-[#111] rounded-xl aspect-[4/3] relative overflow-hidden mb-4">
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-600 bg-gradient-to-tr from-sky-950 to-slate-900">
+                        <span class="text-2xl font-semibold tracking-tighter opacity-30">GB UAE</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <a href="https://globalbestuae.com/" target="_blank" class="bg-white text-black px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Visit Global Best <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-white font-medium text-lg tracking-tight">Global Best UAE</h3>
+                    <p class="text-sm text-slate-500 mt-1">Business Consulting</p>
+                </div>
+            </div>
+
+            <!-- Project 4: W-Mart -->
+            <div class="glass-panel rounded-2xl p-1 group hover:-translate-y-1 transition-transform duration-300">
+                <div class="bg-[#111] rounded-xl aspect-[4/3] relative overflow-hidden mb-4">
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-600 bg-gradient-to-tr from-orange-950 to-red-950">
+                        <span class="text-2xl font-semibold tracking-tighter opacity-30">W-Mart</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <a href="https://welcomemart.shop/" target="_blank" class="bg-white text-black px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Visit Welcome Mart <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-white font-medium text-lg tracking-tight">Welcome Mart</h3>
+                    <p class="text-sm text-slate-500 mt-1">E-Commerce Platform</p>
+                </div>
+            </div>
+
+            <!-- Project 5: Welcome Properties -->
+            <div class="glass-panel rounded-2xl p-1 group hover:-translate-y-1 transition-transform duration-300 md:col-span-2 lg:col-span-2">
+                <div class="bg-[#111] rounded-xl aspect-[2.66/1] md:aspect-[2.1/1] lg:aspect-[2.66/1] relative overflow-hidden mb-4">
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-600 bg-gradient-to-r from-slate-900 via-emerald-950/20 to-slate-900">
+                        <span class="text-3xl font-semibold tracking-tighter opacity-30">Welcome Properties</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <a href="https://www.welcomeproperties.in/" target="_blank" class="bg-white text-black px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Visit Welcome Properties <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="px-4 pb-4 flex justify-between items-end">
+                    <div>
+                        <h3 class="text-white font-medium text-lg tracking-tight">Welcome Properties</h3>
+                        <p class="text-sm text-slate-500 mt-1">Real Estate Listing Platform</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-white/[0.02] border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-semibold text-white tracking-tight mb-4">Transparent Project Pricing</h2>
+                <p class="text-slate-400 font-light">Simple, contractor-friendly tiers based on scope and complexity. </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Tier 1 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col hover:border-white/20 transition-colors">
+                    <div class="mb-6">
+                        <div class="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-white mb-4 border border-white/10">
+                            <iconify-icon icon="solar:box-minimalistic-linear" width="20"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg font-medium text-white">Small Website</h3>
+                        <p class="text-sm text-slate-500 mt-2">Perfect for portfolios or single landing pages.</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-2xl font-semibold text-white">₹15,000</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-6">+ Requirement Charges</p>
+                        <a href="#contact" class="block w-full text-center py-2.5 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all">
+                            Start Small Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col relative border-white/20 bg-white/[0.03]">
+                    <div class="absolute top-0 right-0 p-4">
+                        <iconify-icon icon="solar:star-bold" class="text-white/20" width="24"></iconify-icon>
+                    </div>
+                    <div class="mb-6">
+                        <div class="w-10 h-10 bg-white text-black rounded-lg flex items-center justify-center mb-4">
+                            <iconify-icon icon="solar:layers-minimalistic-linear" width="20"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg font-medium text-white">Medium Website</h3>
+                        <p class="text-sm text-slate-500 mt-2">For small businesses requiring multiple pages and CMS.</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-2xl font-semibold text-white">₹25,000+</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-6">+ Requirement Charges</p>
+                        <a href="#contact" class="block w-full text-center py-2.5 rounded-lg bg-white text-black text-sm font-medium hover:bg-slate-200 transition-all">
+                            Start Medium Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col hover:border-white/20 transition-colors">
+                    <div class="mb-6">
+                        <div class="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-white mb-4 border border-white/10">
+                            <iconify-icon icon="solar:sitemap-linear" width="20"></iconify-icon>
+                        </div>
+                        <h3 class="text-lg font-medium text-white">Large Website</h3>
+                        <p class="text-sm text-slate-500 mt-2">Complex functionality, e-commerce, or custom web apps.</p>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-2xl font-semibold text-white">₹37,000+</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-6">+ Requirement Charges</p>
+                        <a href="#contact" class="block w-full text-center py-2.5 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all">
+                            Start Large Project
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Hire Me / Contact Section -->
+    <section id="contact" class="py-24 px-6 max-w-4xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-12 md:gap-20">
+            
+            <div class="md:w-1/3">
+                <h2 class="text-3xl font-semibold text-white tracking-tight mb-6">Hire Me</h2>
+                <p class="text-slate-400 font-light mb-8 leading-relaxed">
+                    I am currently available for remote contract work. Whether you need a quick landing page or a long-term development partner, let's discuss how I can help your business grow.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex flex-shrink-0 items-center justify-center text-white">
+                            <iconify-icon icon="solar:phone-calling-linear" width="18"></iconify-icon>
+                        </div>
+                        <div>
+                            <span class="block font-medium text-white text-sm">Phone</span>
+                            <a href="tel:09656778508" class="text-slate-400 text-sm hover:text-white transition-colors">096567 78508</a>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex flex-shrink-0 items-center justify-center text-white">
+                            <iconify-icon icon="solar:map-point-linear" width="18"></iconify-icon>
+                        </div>
+                        <div>
+                            <span class="block font-medium text-white text-sm">Address</span>
+                            <address class="text-slate-400 text-sm not-italic leading-relaxed mt-1">
+                                Vazakkam Vettil, Behind KMR Steels, Ulleryi-19, Atholi, Kerala – 673612
+                            </address>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-white/10 w-full my-4"></div>
+                    
+                    <div class="flex items-center gap-4 text-sm text-slate-300">
+                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white">
+                            <iconify-icon icon="solar:clock-circle-linear" width="18"></iconify-icon>
+                        </div>
+                        <div>
+                            <span class="block font-medium text-white">Quick Turnaround</span>
+                            <span class="text-slate-500">Committed to Deadlines</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:w-2/3">
+                <form class="space-y-6" id="whatsappForm">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-medium text-slate-500 uppercase tracking-wider">Full Name</label>
+                            <input type="text" id="wa-name" class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-white transition-colors text-sm" placeholder="John Doe">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-medium text-slate-500 uppercase tracking-wider">Business Name</label>
+                            <input type="text" id="wa-business" class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-white transition-colors text-sm" placeholder="Company Ltd.">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-medium text-slate-500 uppercase tracking-wider">Address</label>
+                            <input type="text" id="wa-address" class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-white transition-colors text-sm" placeholder="Street Address">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-medium text-slate-500 uppercase tracking-wider">City, State / Country</label>
+                            <input type="text" id="wa-city" class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-white transition-colors text-sm" placeholder="New York, USA">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-medium text-slate-500 uppercase tracking-wider">Website Type</label>
+                            <div class="relative">
+                                <select id="wa-type" class="w-full bg-[#050505] border-b border-white/10 py-3 text-white focus:outline-none focus:border-white transition-colors text-sm appearance-none rounded-none cursor-pointer">
+                                    <option>Portfolio Website</option>
+                                    <option>Corporate / Business</option>
+                                    <option>E-Commerce</option>
+                                    <option>Landing Page</option>
+                                    <option>Blog / Content</option>
+                                </select>
+                                <iconify-icon icon="solar:alt-arrow-down-linear" class="absolute right-0 top-3 text-slate-500 pointer-events-none"></iconify-icon>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-medium text-slate-500 uppercase tracking-wider">Contract Duration</label>
+                            <div class="relative">
+                                <select id="wa-duration" class="w-full bg-[#050505] border-b border-white/10 py-3 text-white focus:outline-none focus:border-white transition-colors text-sm appearance-none rounded-none cursor-pointer">
+                                    <option selected="">1 Month</option>
+                                    <option>3 Months</option>
+                                    <option>6 Months</option>
+                                    <option>Project Based (Fixed)</option>
+                                </select>
+                                <iconify-icon icon="solar:alt-arrow-down-linear" class="absolute right-0 top-3 text-slate-500 pointer-events-none"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-medium text-slate-500 uppercase tracking-wider">Why do you want to hire me?</label>
+                        <textarea id="wa-message" rows="3" class="w-full bg-transparent border-b border-white/10 py-3 text-white focus:outline-none focus:border-white transition-colors text-sm resize-none" placeholder="Briefly describe project goals and requirements..."></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="button" onclick="sendToWhatsapp()" class="group w-full md:w-auto px-8 py-3 bg-white text-black rounded-lg font-medium hover:bg-slate-200 transition-all flex items-center justify-center gap-2">
+                            <iconify-icon icon="solar:chat-round-dots-linear" width="20"></iconify-icon>
+                            Send on WhatsApp
+                        </button>
+                        <p class="text-xs text-slate-600 mt-3 text-center md:text-left">
+                            <iconify-icon icon="solar:shield-check-linear" class="inline align-text-bottom mr-1"></iconify-icon>
+                            Your details are secure. Direct communication.
+                        </p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-[#08090a] py-12">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-5 h-5 bg-white rounded-full flex items-center justify-center text-black text-[10px] font-bold">M</div>
+                <span class="text-white text-sm font-medium tracking-tight">Muhammed Adnan</span>
+            </div>
+            
+            <p class="text-xs text-slate-600">
+                © 2026 Muhammed Adnan. All rights reserved.
+            </p>
+
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-500 hover:text-white transition-colors">
+                    <iconify-icon icon="solar:link-circle-linear" width="20"></iconify-icon>
+                </a>
+                <a href="#" class="text-slate-500 hover:text-white transition-colors">
+                    <iconify-icon icon="solar:mailbox-linear" width="20"></iconify-icon>
+                </a>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    (function(){
-      const phoneNumber = "919656778508"; // keep as international format (no +)
-      // --- Dark mode (persist)
-      const body = document.body;
-      const toggleBtn = document.getElementById('darkToggle');
-      const toggleLabel = document.getElementById('toggleLabel');
-      const toggleIcon = document.getElementById('toggleIcon');
+    <script>
+        function sendToWhatsapp() {
+            const phoneNumber = "919656778508";
+            
+            const name = document.getElementById('wa-name').value;
+            const business = document.getElementById('wa-business').value;
+            const address = document.getElementById('wa-address').value;
+            const city = document.getElementById('wa-city').value;
+            const type = document.getElementById('wa-type').value;
+            const duration = document.getElementById('wa-duration').value;
+            const message = document.getElementById('wa-message').value;
 
-      // initialize from localStorage
-      const stored = localStorage.getItem('dark-mode');
-      if (stored === 'enabled') {
-        body.classList.add('dark-mode');
-        toggleBtn.setAttribute('aria-pressed','true');
-        toggleLabel.textContent = 'Light';
-        // swap to sun icon
-        toggleIcon.innerHTML = '<path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10 8h2v-3h-2v3zm7.03-15.16l-1.79-1.8-1.79 1.8 1.79 1.79 1.79-1.79zM17.24 19.16l1.79 1.79 1.79-1.79-1.79-1.79-1.79 1.79zM20 11v2h3v-2h-3zM11 4V1H9v3h2zM4.22 17.66l1.79-1.79L4.22 14.08l-1.79 1.79 1.79 1.79zM12 7a5 5 0 100 10 5 5 0 000-10z" fill="currentColor" />';
-      } else {
-        toggleLabel.textContent = 'Dark';
-        toggleIcon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" />';
-      }
+            // Construct message
+            const text = `*New Service Inquiry*%0a%0a*Name:* ${name}%0a*Business:* ${business}%0a*Location:* ${address}, ${city}%0a*Type:* ${type}%0a*Duration:* ${duration}%0a*Message:* ${message}`;
 
-      toggleBtn.addEventListener('click', function(){
-        const isDark = body.classList.toggle('dark-mode');
-        toggleBtn.setAttribute('aria-pressed', String(isDark));
-        if (isDark) {
-          localStorage.setItem('dark-mode','enabled');
-          toggleLabel.textContent = 'Light';
-          toggleIcon.innerHTML = '<path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10 8h2v-3h-2v3zm7.03-15.16l-1.79-1.8-1.79 1.8 1.79 1.79 1.79-1.79zM17.24 19.16l1.79 1.79 1.79-1.79-1.79-1.79-1.79 1.79zM20 11v2h3v-2h-3zM11 4V1H9v3h2zM4.22 17.66l1.79-1.79L4.22 14.08l-1.79 1.79 1.79 1.79zM12 7a5 5 0 100 10 5 5 0 000-10z" fill="currentColor" />';
-        } else {
-          localStorage.setItem('dark-mode','disabled');
-          toggleLabel.textContent = 'Dark';
-          toggleIcon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor" />';
+            const url = `https://wa.me/${phoneNumber}?text=${text}`;
+            window.open(url, '_blank');
         }
-      });
+    </script>
 
-      // --- Footer year
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // --- WhatsApp form submission
-      const form = document.getElementById('whatsappForm');
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        // Validate minimal fields
-        const name = document.getElementById('name').value.trim();
-        const address = document.getElementById('address').value.trim();
-        const business = document.getElementById('business').value.trim();
-        const type = document.getElementById('type').value.trim();
-        const reason = document.getElementById('reason').value.trim();
-        const duration = document.getElementById('duration').value;
-
-        if (!name || !business || !type || !reason) {
-          alert('Please complete the required fields.');
-          return;
-        }
-
-        const message = `Hi Muhammed Adnan, I want to give you a contract for a website project.%0A%0AFull Name: ${name}%0AAddress: ${address}%0ABusiness Name: ${business}%0AWebsite Type: ${type}%0AWhy: ${reason}%0AContract Duration: ${duration}%0A%0AI understand that you only work remotely`;
-        const url = `https://wa.me/${phoneNumber}?text=${message}`;
-        window.open(url, '_blank', 'noopener');
-      });
-
-      // --- Widgetify popup
-      const widgetBtn = document.getElementById('widgetifyBtn');
-      const widgetPopup = document.getElementById('widgetify-popup');
-      const widgetClose = document.getElementById('widgetCloseBtn');
-      const widgetMessage = document.getElementById('widgetMessage');
-      const openWhatsApp = document.getElementById('openWhatsApp');
-
-      function openPopup() {
-        widgetPopup.classList.add('show');
-        widgetPopup.setAttribute('aria-hidden','false');
-        widgetBtn.setAttribute('aria-expanded','true');
-        widgetMessage.focus();
-      }
-      function closePopup() {
-        widgetPopup.classList.remove('show');
-        widgetPopup.setAttribute('aria-hidden','true');
-        widgetBtn.setAttribute('aria-expanded','false');
-        widgetBtn.focus();
-      }
-
-      widgetBtn.addEventListener('click', function(){ 
-        const shown = widgetPopup.classList.contains('show');
-        if (shown) closePopup(); else openPopup();
-      });
-      widgetClose.addEventListener('click', closePopup);
-
-      openWhatsApp.addEventListener('click', function(){
-        const text = widgetMessage.value.trim() || 'Hello Muhammed Adnan, I am interested in working with you.';
-        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
-        window.open(url, '_blank', 'noopener');
-      });
-
-      // Close popup on Escape
-      document.addEventListener('keydown', function(e){
-        if (e.key === 'Escape') {
-          if (widgetPopup.classList.contains('show')) closePopup();
-        }
-      });
-
-      // Improve accessibility: trap focus within popup when open (simple)
-      widgetPopup.addEventListener('keydown', function(e){
-        if (e.key === 'Tab') {
-          // very small trap: ensure ESC works and focus does not leave first/last elements
-          const focusable = widgetPopup.querySelectorAll('input, button, [href], textarea, select');
-          if (!focusable.length) return;
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-        }
-      });
-
-    })();
-  </script>
-</body>
-</html>
+</body></html>
