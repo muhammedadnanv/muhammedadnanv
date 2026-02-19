@@ -586,48 +586,150 @@
     </section>
 
     <!-- Tools Section -->
-    <section class="border-y border-white/5 bg-white/[0.02]">
-        <div class="max-w-6xl mx-auto px-6 py-12">
-            <p class="text-center text-sm font-medium text-slate-500 mb-8 uppercase tracking-widest">Powering Solutions With</p>
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16 items-center opacity-80">
-                
-                <div class="flex items-center gap-3 group">
-                    <div class="p-2 bg-white/5 rounded-lg border border-white/10 text-pink-400 group-hover:border-pink-500/50 transition-colors">
-                        <iconify-icon icon="solar:code-square-linear" width="24"></iconify-icon>
-                    </div>
-                    <div>
-                        <span class="block text-white font-medium text-sm">Lovable</span>
-                        <span class="text-xs text-slate-500">Frontend</span>
-                    </div>
-                </div>
+    <section class="border-y border-white/5 bg-white/[0.02] overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <p class="text-center text-sm font-medium text-slate-500 mb-8 uppercase tracking-widest">
+      Powering Solutions With
+    </p>
 
-                <div class="w-px h-8 bg-white/10 hidden md:block"></div>
+    <div class="relative">
+      <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0b0f19] to-transparent z-10"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0b0f19] to-transparent z-10"></div>
 
-                <div class="flex items-center gap-3 group">
-                    <div class="p-2 bg-white/5 rounded-lg border border-white/10 text-emerald-400 group-hover:border-emerald-500/50 transition-colors">
-                        <iconify-icon icon="solar:database-linear" width="24"></iconify-icon>
-                    </div>
-                    <div>
-                        <span class="block text-white font-medium text-sm">Supabase</span>
-                        <span class="text-xs text-slate-500">Backend</span>
-                    </div>
-                </div>
+      <div class="marquee">
+        <div class="marquee__track">
 
-                <div class="w-px h-8 bg-white/10 hidden md:block"></div>
+          <!-- Lovable -->
+          <div class="tech-card">
+            <span class="tech-title">Lovable</span>
+            <span class="tech-sub">Frontend</span>
+          </div>
 
-                <div class="flex items-center gap-3 group">
-                    <div class="p-2 bg-white/5 rounded-lg border border-white/10 text-blue-400 group-hover:border-blue-500/50 transition-colors">
-                        <iconify-icon icon="solar:stars-minimalistic-linear" width="24"></iconify-icon>
-                    </div>
-                    <div>
-                        <span class="block text-white font-medium text-sm">Gemini</span>
-                        <span class="text-xs text-slate-500">Artificial Intelligence</span>
-                    </div>
-                </div>
+          <div class="divider"></div>
 
-            </div>
+          <!-- Supabase -->
+          <div class="tech-card">
+            <span class="tech-title">Supabase</span>
+            <span class="tech-sub">Backend</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Gemini -->
+          <div class="tech-card">
+            <span class="tech-title">Gemini</span>
+            <span class="tech-sub">Artificial Intelligence</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Wix -->
+          <div class="tech-card">
+            <span class="tech-title">Wix</span>
+            <span class="tech-sub">E-Commerce</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- HTML -->
+          <div class="tech-card">
+            <span class="tech-title">HTML</span>
+            <span class="tech-sub">Static Structure</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- CSS -->
+          <div class="tech-card">
+            <span class="tech-title">CSS</span>
+            <span class="tech-sub">Styling System</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- JavaScript -->
+          <div class="tech-card">
+            <span class="tech-title">JavaScript</span>
+            <span class="tech-sub">Interactivity</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Widgetify -->
+          <div class="tech-card">
+            <span class="tech-title">Widgetify</span>
+            <span class="tech-sub">Boosting Websites</span>
+          </div>
+
+          <!-- Duplicate for smooth loop -->
+          <div class="divider"></div>
+          <div class="tech-card"><span class="tech-title">Lovable</span><span class="tech-sub">Frontend</span></div>
+          <div class="divider"></div>
+          <div class="tech-card"><span class="tech-title">Supabase</span><span class="tech-sub">Backend</span></div>
+          <div class="divider"></div>
+          <div class="tech-card"><span class="tech-title">Gemini</span><span class="tech-sub">Artificial Intelligence</span></div>
+          <div class="divider"></div>
+          <div class="tech-card"><span class="tech-title">Wix</span><span class="tech-sub">E-Commerce</span></div>
+          <div class="divider"></div>
+          <div class="tech-card"><span class="tech-title">HTML</span><span class="tech-sub">Static Structure</span></div>
+          <div class="divider"></div>
+          <div class="tech-card"><span class="tech-title">CSS</span><span class="tech-sub">Styling System</span></div>
+          <div class="divider"></div>
+          <div class="tech-card"><span class="tech-title">JavaScript</span><span class="tech-sub">Interactivity</span></div>
+          <div class="divider"></div>
+          <div class="tech-card"><span class="tech-title">Widgetify</span><span class="tech-sub">Boosting Websites</span></div>
+
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .marquee {
+      overflow: hidden;
+    }
+
+    .marquee__track {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      width: max-content;
+      animation: marquee 25s linear infinite;
+    }
+
+    .marquee:hover .marquee__track {
+      animation-play-state: paused;
+    }
+
+    .tech-card {
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+    }
+
+    .tech-title {
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .tech-sub {
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+
+    .divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+  </style>
+</section>
 
     <!-- Projects Section -->
     <section id="projects" class="py-24 px-6 max-w-6xl mx-auto">
